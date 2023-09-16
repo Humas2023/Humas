@@ -54,9 +54,9 @@ if __name__ == '__main__':
     parser.add_argument("--qps_err",type=int,default=0)
 
     # , required=True
-    parser.add_argument("--qps_pred_dir",type=str,default='/data/k8smaster/CEA-Informer_atc/results')
+    parser.add_argument("--qps_pred_dir",type=str,default='KAE-Informer/results')
     parser.add_argument("--qps_true_dir",type=str,default='exp_total_qps_data_aggr2/mean')
-    parser.add_argument('--qps_pred_model',type=str,default='noeventrawinformer')
+    parser.add_argument('--qps_pred_model',type=str,default='kae-informer')
     parser.add_argument('--base_dir', type=str, default="hetergenous_data_exp/pod_metric_data_apps", help='data')
     parser.add_argument('--aggre_base_dir', type=str, default="hetergenous_data_exp/pod_metric_data_apps_aggr",
                         help='aggr_data')

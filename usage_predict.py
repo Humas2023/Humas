@@ -20,19 +20,7 @@ class PredictUsageModel():
                  reg_y_metric='cpu_usage', x_split=20, y_split=20, test_size=0.2, norm=False,
                  lr_params={}, rfr_params={}, xgbr_params={},
                  gbdtr_params={},grf_params={}, perf_metric='r2score'):
-        '''
-        bayies_x_metric:进行贝叶斯推断的X维度(默认为rt)
-        bayies_y_metric:进行贝叶斯推断的Y维度(默认为cpu utilization)
-        reg_x_metric: 进行回归预测的输入维度
-        reg_y_metric:进行回归预测的输出维度
-        x_split:贝叶斯推断时对X维度划分多少级level
-        y_split：贝叶斯推断时对Y维度划分多少级level
-        lr_params：线性回归器指定参数
-        rfr_params：随机森林回归器指定参数
-        xgbr_params：XGBBoost回归器指定参数
-        gbdtr_params：GBDT回归器指定参数
-        '''
-
+        
         self.bayies_x_metric = bayies_x_metric
         self.bayies_y_metric = bayies_y_metric
         self.bayies_x_label = "%s_label" % bayies_x_metric
@@ -287,16 +275,6 @@ class PredictUsageModel():
         return out_df
 
     def predict_usage(self, future_qps, reg='lr', cpu_uti_limit=0.4, rt_mean_limit=None, violate=0.1):
-        '''
-        参数：
-        future_qps：为未来的QPS总量,或者输入值的字典（dict）
-        cpu_uti_limit: (0,1]为限制的CPU利用率峰值
-        reg：为预测当前总QPS容量时选择的regressor，目前支持：lr,xreg,xgbr,gbdtr四种
-        rt_mean_limit： 用户指定的期望的RT平均值上限
-        violate：当使用贝叶斯推断指定rt_mean上限对应的CPU阈值时，设定置信度/允许的QoS违反的概率
-        返回值：
-        cpu_quota_predict: 满足QPS用量的CPU配额。
-        '''
         if reg not in self.reg_models.keys():
             reg = 'lr'
 
