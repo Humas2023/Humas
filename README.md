@@ -22,11 +22,11 @@ Update the code of Humas and the data of $MS_0$ in this repository.
 
 3. find_range2.py: We implement the drift detection to determine the ranage of training data for each version of the performance models. In our implementation, we realize three types of the detection algorithm (default find_train_range_dist()):
 
-(1) def find_train_range_dist(): we realize the drift detection based on the difference between the before and current probability density functions which describe the joint distributions of the CPU usage and the workload. In this submission, we can estimate the density difference based on the three metrics: LSDD, MMD, Context-aware MMD.
+    (1) def find_train_range_dist(): we realize the drift detection based on the difference between the before and current probability density functions which describe the joint distributions of the CPU usage and the workload. In this submission, we can estimate the density difference based on the three metrics: LSDD, MMD, Context-aware MMD.
 
-(2) def find_train_range_gmm(): We realize the drift detection via classifying the distributions of the CPU usage and the workload in varying time range into diverse categories.
+    (2) def find_train_range_gmm(): We realize the drift detection via classifying the distributions of the CPU usage and the workload in varying time range into diverse categories.
 
-(3) def find_train_range_threshold(): This function implements the supervised drfit detection. When we discover that the change of RUE exceeds a specified threshold, it is regarded to an observed drift.
+    (3) def find_train_range_threshold(): This function implements the supervised drfit detection. When we discover that the change of RUE exceeds a specified threshold, it is regarded to an observed drift.
 
 4. KAE-Informer: the workload forecasting algorithm, which implements based on the open source code of the reference paper "KAE-Informer: A Knowledge Auto-Embedding Informer for Forecasting Long-Term Workloads of Microservices" (https://doi.org/10.1145/3543507.3583288).
 
